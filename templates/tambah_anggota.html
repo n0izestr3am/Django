@@ -1,0 +1,803 @@
+{% extends 'layout/app.html' %}
+{% block stylesheet %}
+    <style>
+    </style>
+{% endblock %}
+{% block body %}
+    <section class="users-edit">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Tambah  Anggota</h4>
+            </div>
+            <div class="card-content">
+                <div class="card-body">
+                    <ul class="nav nav-tabs mb-3" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link d-flex align-items-center active" id="account-tab" data-toggle="tab" href="#account" aria-controls="account" role="tab" aria-selected="true">
+                                <i class="feather icon-user mr-25"></i><span class="d-none d-sm-block">Data Primer</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link d-flex align-items-center" id="information-tab" data-toggle="tab" href="#information" aria-controls="information" role="tab" aria-selected="false">
+                                <i class="feather icon-info mr-25"></i><span class="d-none d-sm-block">Data Sekunder</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link d-flex align-items-center" id="social-tab" data-toggle="tab" href="#social" aria-controls="social" role="tab" aria-selected="false">
+                                <i class="feather icon-share-2 mr-25"></i><span class="d-none d-sm-block">Reviewer & Persetujuan</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="account" aria-labelledby="account-tab" role="tabpanel">
+                            <form action="tambah" class="form-horizontal" method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+
+
+                                <div class="row mt-1">
+
+
+
+
+                                    <div class="col-12 col-sm-6">
+
+  <h5 class="mb-1"><i class="feather icon-user mr-25"></i>Personal Information</h5>
+
+
+
+
+    <div class="form-group">
+        <div class="controls">
+            <label>Username</label>
+            <input type="text" name="username" class="form-control"  required="" placeholder="Username">
+
+        </div>
+        </div>
+
+        <div class="form-group">
+                <div class="controls">
+                    <label>Nama Lengkap</label>
+                    <input type="text" class="form-control" name="nama" placeholder="Nama Lengkap" id="inputFirst" required>
+                </div>
+            </div>
+
+         {# start row #}
+
+             <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="firstName11">NIK</label>
+                                <input name="value" type="text" class="form-control" id="firstName11">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="lastName11">Nomor Anggota</label>
+                                <input name="value" type="text" class="form-control" id="lastName11">
+                            </div>
+                        </div>
+
+            </div>
+        {# end row #}
+
+
+
+         {# start row #}
+
+             <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="firstName11">Gelar depan</label>
+                                <input name="value" type="text" class="form-control" id="firstName11">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="lastName11">Gelar Belakang</label>
+                                <input name="value" type="text" class="form-control" id="lastName11">
+                            </div>
+                        </div>
+
+                   <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="lastName11">Tempat Lahir</label>
+                                <input name="value" type="text" class="form-control" id="lastName11">
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+        {# end row #}
+
+         {# start row #}
+
+             <div class="row">
+                        <div class="col-sm-5">
+                            <div class="form-group">
+                                <label for="firstName11">Tanggal Lahir</label>
+                                <input name="value"type="date" name="date"  class="form-control" id="dateInput">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="lastName11">Jenis kelamin</label>
+                                <select name="JK" class="custom-select" id="customSelect">
+                                    <option value="L">Laki - Laki</option>
+                                    <option value="P">Perempuan</option>
+                                </select>
+                            </div>
+                        </div>
+
+                   <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="lastName11">Gol darah</label>
+                                 <select name="gd" class="custom-select" id="customSelect">
+                                    <option value="AB">AB</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="O">O</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+        {# end row #}
+
+
+
+
+
+     {# start row #}
+  <div class="divider divider-left"> <div class="divider-text text-warning">Alamat Sesuai KTP</div> </div>
+             <div class="row">
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <label for="firstName11">Alamat jl Komplek<span class="font-small-1 text-warning">*KTP</span></label>
+                               <input name="value" type="text" class="form-control" id="lastName11">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="lastName11">Nomor<span class="font-small-1 text-warning">*KTP</span></label>
+                                   <input name="value" type="number" class="form-control">
+                            </div>
+                        </div>
+
+                </div>
+
+        {# end row #}
+
+
+
+ {# start row #}
+
+             <div class="row">
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="lastName11">RT<span class="font-small-1 text-warning">*KTP</span></label>
+                             <input name="value" type="number" value="01" class="form-control">
+                            </div>
+                        </div>
+
+                   <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="lastName11">RW<span class="font-small-1 text-warning">*KTP</span></label>
+                             <input name="value" type="number" value="01"  class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="form-group">
+                                <label for="firstName11">Kelurahan<span class="font-small-1 text-warning">*KTP</span></label>
+                                <select name="kelurahan" class="custom-select">
+                                    <option selected="">Pilih Kelurahan</option>
+                                    <option value="QA">Nama Kelurahan</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+        {# end row #}
+
+
+{# start row #}
+
+             <div class="row">
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                              <label for="firstName11">Kecamatan<span class="font-small-1 text-warning">*KTP</span></label>
+                                <select name="kecamatan" class="custom-select">
+                                    <option selected="">Pilih kecamatan</option>
+                                    <option value="QA">Nama kecamatan</option>
+                                </select>
+                            </div>
+                        </div>
+
+                   <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="firstName11">Kabupaten<span class="font-small-1 text-warning">*KTP</span></label>
+                                <select name="kabupaten" class="custom-select">
+                                    <option selected="">Pilih Kabupaten</option>
+                                    <option value="QA">Nama Kabupaten</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="firstName11">Provinsi <span class="font-small-1 text-warning">*KTP</span></label>
+                                <select name="kelurahan" class="custom-select">
+                                    <option selected="">Pilih Provinsi</option>
+                                    <option value="QA">Jawa Barat</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+        {# end row #}
+
+
+    {# start row #}
+
+            <div class="row">
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <label for="firstName11">Status Rumah</label>
+                                <select name="kelurahan" class="custom-select">
+                                    <option selected="">Pilih Status</option>
+                                    <option value="QA">Milik Sendiri</option>
+                                    <option value="QA">Numpang Alamat</option>
+                                    <option value="QA">Rumah Keluarga</option>
+                                    <option value="QA">Kontrak / kost</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="lastName11">Kode POS</label>
+                                   <input name="value" type="number" class="form-control">
+                            </div>
+                        </div>
+
+                </div>
+
+        {# end row #}
+
+
+
+
+    {# start row #}
+
+
+                     <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="Agama">Agama</label>
+                                <select name="agama" class="custom-select">
+                                    <option selected="">Pilih Agama</option>
+                                    <option value="Islam">Islam</option>
+                                    <option value="Kristen">Kristen</option>
+                                    <option value="katolik">katolik</option>
+                                    <option value="Hindu">Hindu</option>
+                                    <option value="Budha">Budha</option>
+                                    <option value="Konghucu">Konghucu</option>
+                                    <option value="Kepercayaan">Kepercayaan</option>
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="firstName11">Status Perkawinan</label>
+                                <select name="kelurahan" class="custom-select">
+                                    <option selected="">Pilih Status Perkawinan</option>
+                                    <option value="Lajang">Lajang</option>
+                                    <option value="Menikah">Menikah</option>
+                                    <option value="cerai_hidup">Cerai Hidup</option>
+                                    <option value="cerai_mati">Cerai Mati</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+
+                </div>
+
+        {# end row #}
+
+  <div class="form-group">
+        <div class="controls">
+            <label>Pekerjaan</label>
+            <input type="text" name="pekerjaan" class="form-control"  required="" placeholder="Pekerjaan">
+
+        </div>
+        </div>
+
+
+
+
+
+                </div>
+
+
+
+{# ============================================================================================ #}
+<div class="col-12 col-sm-6">
+
+
+
+
+       {# start row #}
+<div class="divider divider-left"> <div class="divider-text text-success">Pengajuan</div> </div>
+
+             <div class="row">
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="lastName11">Bertindak Selaku</label>
+                                <select name="JK" class="custom-select" id="customSelect">
+                                    <option value="Pribadi">Pribadi</option>
+                                    <option value="Pengampu">Pengampu</option>
+                                    <option value="Wali">Wali</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="firstName11">Tanggal Pengajuan Anggota</label>
+                                <input name="value"type="date" name="date"  class="form-control" id="dateInput">
+                            </div>
+                        </div>
+                    </div>
+
+        {# end row #}
+
+
+
+       {# start row #}
+<div class="divider divider-left"> <div class="divider-text text-muted">Data Nomor telpon</div> </div>
+
+
+             <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="lastName11">Nomor Telpon Rumah</label>
+                               <input type="text" name="value" class="form-control"  required="" placeholder="Nomor Telpon Rumah">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="firstName11">Nomor HP</label>
+                                   <input type="text" name="value" class="form-control"  required="" placeholder="Nomor HP">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="lastName11">Nomor WA</label>
+                               <input type="text" name="value" class="form-control"  required="" placeholder="Nomor WA">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="firstName11">Nomor HP kedua</label>
+                                   <input type="text" name="value" class="form-control"  required="" placeholder="Nomor HP kedua">
+                            </div>
+                        </div>
+                    </div>
+
+
+  <div class="form-group">
+        <div class="controls">
+            <label>Email Address</label>
+            <input type="email" name="email" class="form-control"  required="" placeholder="Email">
+
+        </div>
+        </div>
+
+
+
+        {# end row #}
+
+<div class="divider divider-left"> <div class="divider-text text-primary">Data Publikasi & referensi</div> </div>
+
+
+{#    start row #}
+  <div class="row">
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="lastName11">Mengenal Koperasi</label>
+                                <select name="value" class="custom-select" id="customSelect">
+                                    <option value="Pribadi"> Kerabat</option>
+                                    <option value="Pengampu"> Internet</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="firstName11">Nama Pemberi Referensi</label>
+                                <input name="value"  type="text" name="npr" placeholder="Nama Pemberi Referensi" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+        {# end row #}
+
+{#    start row #}
+  <div class="row">
+    <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="firstName11">No Anggta Pemberi Referensi</label>
+                                <input name="value"  type="text" name="npr" placeholder="No Anggota Pemberi Referensi" class="form-control">
+                            </div>
+                        </div>
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="firstName11">No HP Pemberi Referensi</label>
+                                <input name="value"  type="text" name="npr" placeholder="Nomor HP Pemberi Referensi" class="form-control">
+                            </div>
+                        </div>
+
+
+                    </div>
+
+        {# end row #}
+
+
+{#    start row #}
+  <div class="row">
+        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="lastName11">Akan Mereferensikan teman </label>
+                                 <select name="value" class="custom-select" id="customSelect">
+                                    <option value="Ya"> Ya</option>
+                                    <option value="Tidak"> Tidak</option>
+                                    <option value="masihragu">  Masih Ragu</option>
+                                    <option value="Lihat dulu"> Lihat dulu </option>
+                                    <option value="lain-lain"> lain-lain</option>
+
+
+                                </select>
+                            </div>
+                        </div>
+
+
+
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="firstName11">Ikut Kajian Muamalah</label>
+                                <input name="value"  type="text" name="npr" placeholder="Ikut Kajian_Muamalah" class="form-control">
+                            </div>
+                        </div>
+
+
+                    </div>
+
+        {# end row #}
+
+<div class="divider divider-left"> <div class="divider-text text-secondary">Data Bukti Diri</div> </div>
+
+<fieldset class="form-group">
+    <label for="basicInputFile">Foto KTP</label>
+    <div class="custom-file">
+        <input type="file" class="custom-file-input" id="inputGroupFile01">
+        <label class="custom-file-label" for="inputGroupFile01">Pilih Foto</label>
+    </div>
+</fieldset>
+
+<fieldset class="form-group">
+    <label for="basicInputFile">Pas FOTO</label>
+    <div class="custom-file">
+        <input type="file" class="custom-file-input" id="inputGroupFile01">
+        <label class="custom-file-label" for="inputGroupFile01">Pilih Pas Foto</label>
+    </div>
+</fieldset>
+
+
+
+        <div class="form-group">
+            <label>Aktif Keanggotaan</label>
+            <ul class="list-unstyled mb-0">
+                <li class="d-inline-block mr-2">
+                    <fieldset>
+                        <div class="vs-radio-con">
+                            <input type="radio" name="aktif_keanggotaan" checked="" value="Y">
+                            <span class="vs-radio">
+                                <span class="vs-radio--border"></span>
+                                <span class="vs-radio--circle"></span>
+                            </span>
+                            Aktif
+                        </div>
+                    </fieldset>
+                </li>
+                <li class="d-inline-block mr-2">
+                    <fieldset>
+                        <div class="vs-radio-con">
+                            <input type="radio" name="aktif_keanggotaan" value="N">
+                            <span class="vs-radio">
+                                <span class="vs-radio--border"></span>
+                                <span class="vs-radio--circle"></span>
+                            </span>
+                            Non Aktif
+                        </div>
+                    </fieldset>
+                </li>
+            </ul>
+        </div>
+
+
+                       </div>
+                        <div class="col-12 d-flex flex-sm-row flex-column justify-content-end pt-1 border-top">
+                            <button type="reset" class="btn btn-outline-warning waves-effect waves-light">Reset</button>
+                            <button type="submit" class="btn btn-success glow mb-1 mb-sm-0 mr-0 ml-sm-1 waves-effect waves-light">Save
+                            Changes</button>
+                        </div>
+             </div>
+          </form>
+
+     <!-- users edit account form ends -->
+     </div>
+
+
+{# ########################################### batas panel#}
+
+
+<div class="tab-pane" id="information" aria-labelledby="information-tab" role="tabpanel">
+    <!-- users edit Info form start -->
+    <div class="row mt-1">
+{# awal kolom #}
+        <div class="col-12 col-sm-6">
+            <h5 class="mb-1"><i class="feather icon-map mr-25"></i>Data Alamat </h5>
+            <div class="form-group">
+                <div class="controls">
+                    <label>Alamat Domisili jl Komplek</label>
+                    <input type="text" class="form-control" name="nama">
+                </div>
+            </div>
+
+  <div class="form-group">
+                <div class="controls">
+                    <label>Alamat Domisili Nomor</label>
+                    <input type="text" class="form-control" name="nama">
+                </div>
+            </div>
+
+
+ {# start row #}
+
+             <div class="row">
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="lastName11">RT <span class="font-small-1 text-success">*Domisili</span></label>
+                             <input name="value" type="number" value="01" class="form-control">
+                            </div>
+                        </div>
+
+                   <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="lastName11">RW <span class="font-small-1 text-success">*Domisili</span></label>
+                             <input name="value" type="number" value="01"  class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="form-group">
+                                <label for="firstName11">Kelurahan <span class="font-small-1 text-success">*Domisili</span></label>
+                                <select name="kelurahan" class="custom-select">
+                                    <option selected="">Pilih Kelurahan</option>
+                                    <option value="QA">Nama Kelurahan</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+        {# end row #}
+
+{# start row #}
+
+             <div class="row">
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                              <label for="firstName11">Kecamatan <span class="font-small-1 text-success">*Domisili</span></label>
+                                <select name="kecamatan" class="custom-select">
+                                    <option selected="">Pilih kecamatan</option>
+                                    <option value="QA">Nama kecamatan</option>
+                                </select>
+                            </div>
+                        </div>
+
+                   <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="firstName11">Kabupaten <span class="font-small-1 text-success">*Domisili</span></label>
+                                <select name="kabupaten" class="custom-select">
+                                    <option selected="">Pilih Kabupaten</option>
+                                    <option value="QA">Nama Kabupaten</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="firstName11">Provinsi <span class="font-small-1 text-success">*Domisili</span></label>
+                                <select name="kelurahan" class="custom-select">
+                                    <option selected="">Pilih Provinsi</option>
+                                    <option value="QA">Jawa Barat</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+        {# end row #}
+
+
+
+ {# start row #}
+
+            <div class="row">
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <label for="firstName11">Alamat  <span class="font-small-1 text-success">*Domisili</span></label>
+                                 <input name="value" type="text" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="lastName11">Kode POS  <span class="font-small-1 text-success">*Domisili</span></label>
+                                   <input name="value" type="number" class="form-control">
+                            </div>
+                        </div>
+
+                </div>
+
+        {# end row #}
+
+ {# start row #}
+
+            <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="firstName11">Status Rumah  <span class="font-small-1 text-success">*Domisili</span></label>
+                                 <select name="kelurahan" class="custom-select">
+                                    <option selected="">Pilih Provinsi</option>
+                                    <option value="QA">Jawa Barat</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="lastName11">Alamat Surat Menyurat  <span class="font-small-1 text-success">*Domisili</span></label>
+                                  <select name="kelurahan" class="custom-select">
+                                    <option selected="">Pilih Provinsi</option>
+                                    <option value="QA">Jawa Barat</option>
+                                </select>
+                            </div>
+                        </div>
+
+                </div>
+
+        {# end row #}
+
+
+
+        </div>
+
+    {# kolom #}
+
+
+        <div class="col-12 col-sm-6">
+         <div class="divider divider-left"> <div class="divider-text text-secondary">Data Pribadi</div> </div>
+
+{# start row #}
+
+            <div class="row">
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <label for="firstName11">Alamat  <span class="font-small-1 text-success">*Domisili</span></label>
+                                 <input name="value" type="text" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="lastName11">Kode POS  <span class="font-small-1 text-success">*Domisili</span></label>
+                                   <input name="value" type="number" class="form-control">
+                            </div>
+                        </div>
+
+                </div>
+
+        {# end row #}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+{# end kolom #}
+    </div>
+</form>
+<!-- users edit Info form ends -->
+</div>
+
+
+{#==================================================================================== batas panel #}
+<div class="tab-pane" id="social" aria-labelledby="social-tab" role="tabpanel">
+                    <!-- users edit socail form start -->
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <fieldset>
+                                <label>Twitter</label>
+
+                            </fieldset>
+                        </div>
+
+                    </div>
+
+                    <!-- users edit socail form ends -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+      </section>
+       {% endblock %}
+      {% block javascript %}
+<script>
+        $(document).on('change', '.file', function (event) {
+        document.getElementById('fileLabel').innerHTML = event.target.files[0].name;
+        });
+ </script>
+{% endblock %}

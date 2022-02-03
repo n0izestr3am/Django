@@ -1,0 +1,112 @@
+{% extends 'layout/app.html' %}
+
+{% load static %}
+
+
+{% block body %}
+
+
+                <section id="basic-datatable">
+
+
+
+   <div class="row">
+                        <div class="col-12">
+   <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active"> {{ page_title }}</li>
+            </ol>
+
+
+
+                            <div class="card">
+
+
+                                <div class="card-header">
+                                    <h4 class="card-title">Data Keanggotaan</h4>
+                                    <a href="{% url 'tambah_anggota' %}" class="btn btn-warning">Tambah</a>
+                                </div>
+                                <div class="card-content">
+
+                                   {% for message in messages %}
+                                        <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+                                            {{ message }}
+                                        </div>
+                                    {% endfor %}
+
+
+                                    <div class="card-body card-dashboard">
+
+
+
+
+                                        <div class="table-responsive">
+                                            <table class="table zero-configuration">
+                                                <thead>
+                                                    <tr>
+                                                        <th>FOTO</th>
+                                                        <th>NAMA</th>
+                                                        <th style="width: 20%">ALAMAT</th>
+
+                                                        <th>pekerjaan</th>
+                                                        <th>jabatan</th>
+                                                        <th>status</th>
+                                                        <th>TGL DAFTAR</th>
+                                                        <th>AKSI</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                          {% for member in members %}
+                                        <tr>
+                                          <td>
+                                            <div class="avatar mr-50">
+                                                <img src="./media/{{ member.foto }}" alt="avtar img holder" height="35" width="35">
+                                            </div></td>
+                                    <td>{{ member.nama }}</td>
+                                    <td>{{ member.alamat }}</td>
+                                    <td>{{ member.pekerjaan }}</td>
+                                    <td>{{ member.jabatan }}</td>
+                                    <td>{{ member.status }}</td>
+
+                                    <td>{{ member.uploaded_at  |date:"d-m-Y H:i:s" }}</td>
+                                    <td>
+                                        <a class="btn btn-sm btn-warning" href="keanggotaan/edit/{{ member.id }}"> <span class="fa fa-edit"></span> Edit</a>
+                                        <a class="btn btn-sm btn-danger" href="keanggotaan/delete/{{ member.id }}"><span class="fa fa-trash"></span> Delete</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+
+
+
+
+
+                                                </tbody>
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                </section>
+
+
+
+{% endblock %}
+{% block javascript %}
+    <script type="text/javascript">
+        $("#id_username").attr("placeholder", "Enter Username");
+        $("#id_password").attr("placeholder", "Enter Password");
+    </script>
+{% endblock %}

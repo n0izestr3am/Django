@@ -1,0 +1,423 @@
+{% extends 'layout/app.html' %}
+{% block stylesheet %}
+<style>
+</style>
+{% endblock %}
+{% block body %}
+
+
+
+<section class="users-edit">
+                    <div class="card">
+
+<div class="card-header">
+    <h4 class="card-title">Tambah  Anggota</h4>
+
+</div>
+
+                        <div class="card-content">
+                            <div class="card-body">
+
+
+
+  {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
+
+
+
+                                <ul class="nav nav-tabs mb-3" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link d-flex align-items-center active" id="account-tab" data-toggle="tab" href="#account" aria-controls="account" role="tab" aria-selected="true">
+                                            <i class="feather icon-user mr-25"></i><span class="d-none d-sm-block">Personal info</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link d-flex align-items-center" id="information-tab" data-toggle="tab" href="#information" aria-controls="information" role="tab" aria-selected="false">
+                                            <i class="feather icon-info mr-25"></i><span class="d-none d-sm-block">Information</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link d-flex align-items-center" id="social-tab" data-toggle="tab" href="#social" aria-controls="social" role="tab" aria-selected="false">
+                                            <i class="feather icon-share-2 mr-25"></i><span class="d-none d-sm-block">Social</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="account" aria-labelledby="account-tab" role="tabpanel">
+                                         <form action="tambah" class="form-horizontal" method="POST" enctype="multipart/form-data">
+                                          {% csrf_token %}
+                                            <div class="row mt-1">
+                                                <div class="col-12 col-sm-6">
+                                                    <h5 class="mb-1"><i class="feather icon-user mr-25"></i>Personal Information</h5>
+
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <label>Nama Lengkap</label>
+                                                            <input type="text" class="form-control" name="nama" placeholder="nama" id="inputFirst" required>
+                                                     </div>
+                                                    </div>
+
+                                                     <div class="form-group">
+                                                        <div class="controls">
+                                                            <label>Username</label>
+                                                            <input type="text" class="form-control" placeholder="Username" name="username">
+                                                        <div class="help-block"></div></div>
+                                                    </div>
+
+                                                        <div class="form-group">
+                                                        <div class="controls">
+                                                            <label>Status</label>
+                                                      <select name="status" class="custom-select" id="customSelect">
+                                                        <option selected="">Pilih Status</option>
+                                                        <option value="Belum Kawin">Belum Kawin</option>
+                                                        <option value="Kawin">Kawin</option>
+                                                        <option value="Cerai Hidup">Cerai Hidup</option>
+                                                        <option value="Cerai Mati">Cerai Mati</option>
+                                                        <option value="Lainnya">Lainnya</option>
+
+                                                    </select>
+                                                        <div class="help-block"></div></div>
+                                                    </div>
+
+
+                                             <div class="form-group">
+                                                        <div class="controls">
+                                                    <label>Departement</label>
+                                                      <select name="departement" class="custom-select" id="customSelect">
+                                                        <option selected="">Pilih Departement</option>
+                                                        <option value="QA">QA</option>
+                                                        <option value="HRD">HRD</option>
+
+
+                                                    </select>
+                                                        <div class="help-block"></div></div>
+                                                    </div>
+
+
+                                           <div class="form-group">
+                                                        <div class="controls">
+                                                    <label>Pekerjaan</label>
+                                                      <select name="pekerjaan" class="custom-select" id="customSelect">
+                                                        <option selected="">Pilih Pekerjaan</option>
+                                                        <option value="PNS">PNS</option>
+                                                        <option value="Karyawan Swasta">Karyawan Swasta</option>
+
+
+                                                    </select>
+                                                        <div class="help-block"></div></div>
+                                                    </div>
+
+
+
+
+                                         <div class="form-group">
+                                                        <label>Jabatan*</label>
+                                                        <ul class="list-unstyled mb-0">
+                                                            <li class="d-inline-block mr-2">
+                                                                <fieldset>
+                                                                    <div class="vs-radio-con">
+                                                                        <input type="radio" name="jabatan" checked="" value="Anggota">
+                                                                        <span class="vs-radio">
+                                                                            <span class="vs-radio--border"></span>
+                                                                            <span class="vs-radio--circle"></span>
+                                                                        </span>
+                                                                        Anggota
+                                                                    </div>
+                                                                </fieldset>
+                                                            </li>
+                                                            <li class="d-inline-block mr-2">
+                                                                <fieldset>
+                                                                    <div class="vs-radio-con">
+                                                                        <input type="radio" name="jabatan" value="Pengurus">
+                                                                        <span class="vs-radio">
+                                                                            <span class="vs-radio--border"></span>
+                                                                            <span class="vs-radio--circle"></span>
+                                                                        </span>
+                                                                       Pengurus
+                                                                    </div>
+                                                                </fieldset>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+
+
+
+
+
+
+                                                    <div class="form-group">
+                                                        <label>Aktif Keanggotaan</label>
+                                                        <ul class="list-unstyled mb-0">
+                                                            <li class="d-inline-block mr-2">
+                                                                <fieldset>
+                                                                    <div class="vs-radio-con">
+                                                                        <input type="radio" name="aktif_keanggotaan" checked="" value="Y">
+                                                                        <span class="vs-radio">
+                                                                            <span class="vs-radio--border"></span>
+                                                                            <span class="vs-radio--circle"></span>
+                                                                        </span>
+                                                                        Aktif
+                                                                    </div>
+                                                                </fieldset>
+                                                            </li>
+                                                            <li class="d-inline-block mr-2">
+                                                                <fieldset>
+                                                                    <div class="vs-radio-con">
+                                                                        <input type="radio" name="aktif_keanggotaan" value="N">
+                                                                        <span class="vs-radio">
+                                                                            <span class="vs-radio--border"></span>
+                                                                            <span class="vs-radio--circle"></span>
+                                                                        </span>
+                                                                        Non Aktif
+                                                                    </div>
+                                                                </fieldset>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+
+
+
+                                                </div>
+                                                <div class="col-12 col-sm-6">
+                                                    <h5 class="mb-1 mt-2 mt-sm-0"><i class="feather icon-map-pin mr-25"></i>Alamat</h5>
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <label>Alamat</label>
+                                                            <input type="text" name="alamat" class="form-control" value="jln, Bandung" required="" placeholder="Alamat">
+                                                        <div class="help-block"></div></div>
+                                                    </div>
+
+                                                     <div class="form-group">
+                                                        <div class="controls">
+                                                            <label>Kota</label>
+                                                            <input type="text" name="kota" class="form-control" placeholder="Kota" data-validation-required-message=" is required">
+                                                        <div class="help-block"></div></div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <label>Nomor Telepon / HP :</label>
+                                                            <input type="text" name="tlp" class="form-control" required="" placeholder="Telepon" >
+                                                        <div class="help-block"></div></div>
+                                                    </div>
+
+
+
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <label>Foto</label>
+                                                            <div class="custom-file">
+                                                                <input type="file" class="form-control custom-file-input file" name="myfile" id="fileInput" required>
+                                                                <label class="custom-file-label" id="fileLabel" for="fileInput">Choose file</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+
+
+
+
+
+                                                </div>
+
+
+                                                <div class="col-12 d-flex flex-sm-row flex-column justify-content-end mt-1">
+                                                    <button type="submit" class="btn btn-success glow mb-1 mb-sm-0 mr-0 mr-sm-1 waves-effect waves-light">Save
+                                                        Changes</button>
+                                                    <button type="reset" class="btn btn-outline-warning waves-effect waves-light">Reset</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <!-- users edit account form ends -->
+                                    </div>
+                                    <div class="tab-pane" id="information" aria-labelledby="information-tab" role="tabpanel">
+                                        <!-- users edit Info form start -->
+
+
+
+                                            <div class="row mt-1">
+                                                <div class="col-12 col-sm-6">
+                                                    <h5 class="mb-1"><i class="feather icon-user mr-25"></i>Personal Information</h5>
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                       dadad
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <label>Nama</label>
+                                                           <input type="text" class="form-control" name="nama" placeholder="nama" id="inputFirst" required>
+
+                                                       </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <label>Website</label>
+                                                            <input type="text" class="form-control" required="" placeholder="Website here..." value="https://rowboat.com/insititious/Angelo" data-validation-required-message="This Website field is required">
+                                                        <div class="help-block"></div></div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label>Gender</label>
+                                                        <ul class="list-unstyled mb-0">
+                                                            <li class="d-inline-block mr-2">
+                                                                <fieldset>
+                                                                    <div class="vs-radio-con">
+                                                                        <input type="radio" name="vueradio" checked="" value="false">
+                                                                        <span class="vs-radio">
+                                                                            <span class="vs-radio--border"></span>
+                                                                            <span class="vs-radio--circle"></span>
+                                                                        </span>
+                                                                        Male
+                                                                    </div>
+                                                                </fieldset>
+                                                            </li>
+                                                            <li class="d-inline-block mr-2">
+                                                                <fieldset>
+                                                                    <div class="vs-radio-con">
+                                                                        <input type="radio" name="vueradio" value="false">
+                                                                        <span class="vs-radio">
+                                                                            <span class="vs-radio--border"></span>
+                                                                            <span class="vs-radio--circle"></span>
+                                                                        </span>
+                                                                        Female
+                                                                    </div>
+                                                                </fieldset>
+                                                            </li>
+                                                            <li class="d-inline-block mr-2">
+                                                                <fieldset>
+                                                                    <div class="vs-radio-con">
+                                                                        <input type="radio" name="vueradio" value="false">
+                                                                        <span class="vs-radio">
+                                                                            <span class="vs-radio--border"></span>
+                                                                            <span class="vs-radio--circle"></span>
+                                                                        </span>
+                                                                        Other
+                                                                    </div>
+                                                                </fieldset>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+
+
+
+
+
+
+
+
+
+
+
+                                                </div>
+                                                <div class="col-12 col-sm-6">
+                                                    <h5 class="mb-1 mt-2 mt-sm-0"><i class="feather icon-map-pin mr-25"></i>Address</h5>
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <label>Address Line 1</label>
+                                                            <input type="text" class="form-control" value="A-65, Belvedere Streets" required="" placeholder="Address Line 1" data-validation-required-message="This Address field is required">
+                                                        <div class="help-block"></div></div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <label>Address Line 2</label>
+                                                            <input type="text" class="form-control" required="" placeholder="Address Line 2" data-validation-required-message="This Address field is required">
+                                                        <div class="help-block"></div></div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <label>Postcode</label>
+                                                            <input type="text" class="form-control" required="" placeholder="postcode" value="1868" data-validation-required-message="This Postcode field is required">
+                                                        <div class="help-block"></div></div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <label>City</label>
+                                                            <input type="text" class="form-control" required="" value="New York" data-validation-required-message="This Time Zone field is required">
+                                                        <div class="help-block"></div></div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <label>State</label>
+                                                            <input type="text" class="form-control" required="" value="New York" data-validation-required-message="This Time Zone field is required">
+                                                        <div class="help-block"></div></div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="controls">
+                                                            <label>Country</label>
+                                                            <input type="text" class="form-control" required="" value="United Kingdom" data-validation-required-message="This Time Zone field is required">
+                                                        <div class="help-block"></div></div>
+                                                    </div>
+
+
+
+
+
+
+
+
+                                                </div>
+                                                <div class="col-12 d-flex flex-sm-row flex-column justify-content-end mt-1">
+                                                    <button type="submit" class="btn btn-primary glow mb-1 mb-sm-0 mr-0 mr-sm-1 waves-effect waves-light">Save
+                                                        Changes</button>
+                                                    <button type="reset" class="btn btn-outline-warning waves-effect waves-light">Reset</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <!-- users edit Info form ends -->
+                                    </div>
+                                    <div class="tab-pane" id="social" aria-labelledby="social-tab" role="tabpanel">
+                                        <!-- users edit socail form start -->
+                                        <form novalidate="">
+                                            <div class="row">
+                                                <div class="col-12 col-sm-6">
+
+                                                    <fieldset>
+                                                        <label>Twitter</label>
+                                                        <div class="input-group mb-75">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text feather icon-twitter" id="basic-addon3"></span>
+                                                            </div>
+                                                            <input type="text" class="form-control" value="https://www.twitter.com/adoptionism744" placeholder="https://www.twitter.com/" aria-describedby="basic-addon3">
+                                                        </div>
+
+
+                                                    </fieldset>
+                                                </div>
+
+                                                <div class="col-12 d-flex flex-sm-row flex-column justify-content-end mt-1">
+                                                    <button type="submit" class="btn btn-success glow mb-1 mb-sm-0 mr-0 mr-sm-1 waves-effect waves-light">Save
+                                                        Changes</button>
+                                                    <button type="reset" class="btn btn-outline-warning waves-effect waves-light">Reset</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <!-- users edit socail form ends -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+
+
+{% endblock %}
+{% block javascript %}
+    <script>
+        $(document).on('change', '.file', function (event) {
+            document.getElementById('fileLabel').innerHTML = event.target.files[0].name;
+        });
+    </script>
+{% endblock %}

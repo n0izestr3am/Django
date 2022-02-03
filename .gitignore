@@ -1,0 +1,7 @@
+__pycache__
+crud/__pycache__/
+mysite/__pycache__/
+.idea
+django_cms.zip
+db.sqlite3
+staticfiles

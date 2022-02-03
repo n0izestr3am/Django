@@ -1,0 +1,125 @@
+
+    {% load static %}
+{% with request.resolver_match.url_name as url_name %}
+  <!-- BEGIN: Main Menu-->
+ <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
+        <div class="navbar-header">
+            <ul class="nav navbar-nav flex-row">
+                <li class="nav-item mr-auto"><a class="navbar-brand" href="{% url 'list' %}">
+                <div class="brand-logo"></div>
+                        <h2 class="brand-text mb-0">Koperasi
+                     <span style="font-size: 10px;" class="text-danger mb-0">Syariah</span>
+
+                        </h2><p>
+
+                    </a></li>
+                <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i class="feather icon-x d-block d-xl-none font-medium-4 success toggle-icon"></i><i class="toggle-icon feather icon-disc font-medium-4 d-none d-xl-block collapse-toggle-icon success" data-ticon="icon-disc"></i></a></li>
+            </ul>
+        </div>
+        <div class="shadow-bottom"></div>
+        <div class="main-menu-content">
+
+
+
+
+
+
+
+            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+                <li class="nav-item"><a href="{% url 'home' %}"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span><span class="badge badge badge-warning badge-pill float-right mr-2">2</span></a>
+                    <ul class="menu-content">
+                        <li class="{% if url_name == 'dashboard' %}active{% endif %}"><a href="{% url 'dashboard' %}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Analytics">Home</span></a>
+                        </li>
+
+                    </ul>
+                </li>
+
+
+
+
+
+<li class=" nav-item"><a href="#"><i class="feather icon-grid"></i>
+    <span class="menu-title" data-i18n="Starter kit">Master Data</span>
+</a>
+<ul class="menu-content">
+    <li class="{% if judul == 'Keanggotaan'%}active{% endif %}"><a href="{% url 'keanggotaan' %}"><i class="feather icon-users"></i><span class="menu-item" data-i18n="2 columns">Data Anggota</span></a> </li>
+
+    <li class="{% if url_name == 'pengguna' %}active{% endif %}"><a href="{% url 'pengguna' %}"><i class="fa fa-clone"></i><span class="menu-item" data-i18n="2 columns">Pengguna</span></a> </li>
+
+
+    <li class="{% if url_name == 'jenis_simpanan' %}active{% endif %}"><a href="{% url 'jenis_simpanan' %}"><i class="fa fa-clone"></i><span class="menu-item" data-i18n="2 columns">Jenis Simpanan</span></a> </li>
+
+
+ <li class="{% if url_name == 'data_kas' %}active{% endif %}"><a href="{% url 'data_kas' %}"><i class="fa fa-clone"></i><span class="menu-item" data-i18n="2 columns">Data KAS</span></a> </li>
+
+ <li class="<?php if($module == 'angsuran') { echo 'active'; } ?>"><a href="index.php?module=angsuran"><i class="fa fa-clone"></i><span class="menu-item" data-i18n="2 columns">Angsuran</span></a> </li>
+
+ <li class="<?php if($module == 'tabungan') { echo 'active'; } ?>"><a href="index.php?module=tabungan"><i class="fa fa-money"></i><span class="menu-item" data-i18n="2 columns">Tabungan</span></a> </li>
+
+ <li class="<?php if($module == 'backup') { echo 'active'; } ?>"><a href="index.php?module=backup"><i class="fa fa-download"></i><span class="menu-item" data-i18n="2 columns">Backup Database</span></a> </li>
+
+<li class="<?php if($module == 'restore') { echo 'active'; } ?>"><a href="index.php?module=restore"><i class="fa fa-database"></i><span class="menu-item" data-i18n="2 columns">Restore Database</span></a> </li>
+
+
+
+
+</ul>
+</li>
+
+
+
+
+
+
+
+<li class="nav-item"><a href="#"><i class="feather icon-briefcase"></i>
+    <span class="menu-title" data-i18n="Starter kit">Transaksi Kas</span>
+</a>
+<ul class="menu-content">
+    <li class="<?php if($module == 'pemasukan') { echo 'active'; } ?>"><a href="index.php?module=pemasukan"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="2 columns">Pemasukan</span></a> </li>
+</ul>
+</li>
+
+<li class=" nav-item"><a href="#"><i class="feather icon-plus-square"></i>
+    <span class="menu-title" data-i18n="Starter kit">Simpanan</span>
+</a>
+<ul class="menu-content">
+    <li class="<?php if($module == 'simpanan') { echo 'active'; } ?>"><a href="index.php?module=simpanan"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="2 columns">Data Simpanan</span></a> </li>
+</ul>
+</li>
+
+
+<li class="nav-item"><a href="#"><i class="feather icon-plus-square"></i>
+    <span class="menu-title" data-i18n="Starter kit">Pinjaman</span>
+</a>
+<ul class="menu-content">
+    <li class="<?php if($module == 'pinjaman') { echo 'active'; } ?>"><a href="index.php?module=pinjaman"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="2 columns">Data Pinjaman</span></a> </li>
+</ul>
+</li>
+
+<li class="nav-item"><a href="#"><i class="feather icon-plus-square"></i>
+    <span class="menu-title" data-i18n="Starter kit">Laporan</span>
+</a>
+<ul class="menu-content">
+    <li class="<?php if($module == 'laporan') { echo 'active'; } ?>"><a href="index.php?module=laporan"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="2 columns">Data Laporan</span></a> </li>
+</ul>
+</li>
+
+<li class="nav-item"><a href="#"><i class="feather icon-settings"></i>
+    <span class="menu-title" data-i18n="Starter kit">Setting</span>
+</a>
+<ul class="menu-content">
+    <li class="<?php if($module == 'identitas') { echo 'active'; } ?>"><a href="index.php?module=identitas"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="2 columns">Identitas</span></a> </li>
+</ul>
+</li>
+
+
+            </ul>
+        </div>
+    </div>
+    <!-- END: Main Menu-->
+
+ {% endwith %}
+
+
+

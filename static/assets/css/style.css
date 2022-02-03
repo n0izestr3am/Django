@@ -1,0 +1,46 @@
+.nav.nav-tabs .nav-item .nav-link.active {
+    border: none;
+    position: relative;
+    color: #019934;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    background-color: transparent;
+}
+
+.nav.nav-tabs .nav-item .nav-link.active:after {
+    content: attr(data-before);
+    height: 2px;
+    width: 100%;
+    left: 0;
+    position: absolute;
+    bottom: 0;
+    top: 100%;
+    background: -webkit-linear-gradient(7deg, #099c3a, rgb(2 153 53)) !important;
+    background: linear-gradient(4deg, #44b469, rgb(1 153 52)) !important;
+    box-shadow: 0 0 8px 0 rgb(176 205 186) !important;
+    -webkit-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    transform: translateY(0px);
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+
+.vs-radio-con input:checked ~ .vs-radio .vs-radio--circle {
+    background: #039a35;
+    box-shadow: 0 3px 12px 0 rgb(211 227 188);
+    opacity: 1;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+
+
+.pagination .page-item.active .page-link {
+    z-index: 3;
+    border-radius: 5rem;
+     background-color: #019934;
+    color: #FFFFFF;
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+}
