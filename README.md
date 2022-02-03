@@ -13,11 +13,12 @@
 
 # Step for Set Up
 ``` 
- 1. git clone https://github.com/gowthamand/django-crud-ajax-login-register-fileupload
+
+ 1. git clone https://github.com/n0izestr3am/Django.git
 
  2. Change settings.py MYSQL CONFIGURATIONS (name, user, password)
 
- 3.  cd django-crud-ajax-login-register-fileupload
+ 3.cd django-crud-ajax-login-register-fileupload
 
  4. pip3 install -r requirements.txt
 
@@ -35,7 +36,8 @@
 
 ```
 
-
+Tested Ubuntu 18.04
+----------------------------------------------
 #MYSQL
 sudo apt-get install python-dev python3-dev
 sudo apt-get install libmysqlclient-dev
@@ -46,3 +48,5 @@ pip install mysqlclient
 import pymysql
 
 pymysql.install_as_MySQLdb() = init.py
+-------------------------------------------------------------------------------------------
+Original SOurce : https://github.com/gowthamand/django-crud-ajax-login-register-fileupload
